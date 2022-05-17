@@ -9,7 +9,7 @@ const config = {
   title: 'Hermes Swap',
   tagline: 'Safe, transparent and fast. A platform at the level of the gods.',
   url: 'https://www.hermesdefi.io/',
-  baseUrl: '/hermes/',
+  baseUrl: '/Developer-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
