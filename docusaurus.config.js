@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'shamandocs', // Usually your GitHub org/user name.
-  projectName: 'hermes', // Usually your repo name.
+  organizationName: 'Hermes-defi', // Usually your GitHub org/user name.
+  projectName: 'Developer-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
