@@ -1,2 +1,2 @@
 # Developer-docs
-Documentation for the integration of developers in Hermes Defi
+Documentation for the developers integration in Hermes Defi
