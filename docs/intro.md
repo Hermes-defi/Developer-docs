@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Contracts Intro
+# Intro
 
 **Hermes-swap** is the Core of Hermes Dex products. This set of contracts are used in several products, such as MasterChefV2, HermesBar, among others. 
 The purpose of this manual is to explain the operation of each part that makes up this set of utilities.
@@ -13,14 +13,16 @@ Get started by **deploy a Hermes contract**.
 
 We advise you to read it in the following order for better understanding. However, feel free to read in the order that suits you best.
 
-0. [Hermes Swap](https://shamandocs.github.io/hermes/docs/Hermes%20Swap)
 1. [Hemes Token](https://shamandocs.github.io/hermes/docs/Hermes%20Token)
-2. [MasterChefV2](https://shamandocs.github.io/hermes/docs/MasterChefHermesV2)
-3. [Hermes Bar](https://shamandocs.github.io/hermes/docs/Hermes%20Bar)
-4. [SingleStakingPool](https://shamandocs.github.io/hermes/docs/SingleStakingPool)
-5. [StableHermesStaking](https://shamandocs.github.io/hermes/docs/StableHermesStaking)
-6. [Hermes Maker](https://shamandocs.github.io/hermes/docs/Hermes%20Maker)
-7. [Liquidity TransferService](https://shamandocs.github.io/hermes/docs/Liquidity%20Transfer)
+2. [Hermes Swap](https://shamandocs.github.io/hermes/docs/Hermes%20Swap)
+3. [MasterChefV2](https://shamandocs.github.io/hermes/docs/MasterChefHermesV2)
+4. [Dual Farms](https://shamandocs.github.io/hermes/docs/Dual%20Farms)
+5. [Staking](https://shamandocs.github.io/hermes/docs/Staking)
+6. [SingleStakingPool](https://shamandocs.github.io/hermes/docs/SingleStakingPool)
+8. [StableHermesStaking](https://shamandocs.github.io/hermes/docs/StableHermesStaking)
+9. [Hermes Bar](https://shamandocs.github.io/hermes/docs/Hermes%20Bar)
+10. [Distributor](https://shamandocs.github.io/hermes/docs/Distributor)
+11. [Liquidity TransferService](https://shamandocs.github.io/hermes/docs/Liquidity%20Transfer)
 
 ## App
 
@@ -34,4 +36,7 @@ We advise you to read it in the following order for better understanding. Howeve
 
 - [Solidity](https://docs.soliditylang.org/en/v0.8.13/installing-solidity.html):
   - When installing Solidity, you are recommended to check all checkboxes related to dependencies.
+
+- [Hardhat](https://hardhat.org/getting-started/):
+  - Hardhat is a development environment to compile, deploy, test, and debug your Ethereum software.
 
