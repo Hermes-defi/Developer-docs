@@ -47,7 +47,7 @@ We advise you to read it in the following order for better understanding. Howeve
 
 ## App
 
-**try Hermes immediately** with **[hermesfinance app](https://www.hermesdefi.io/)**.
+**try Hermes immediately** with **[hermes defi website](https://www.hermesdefi.io/)**.
 
 
 ### Tools
