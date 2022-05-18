@@ -7,7 +7,7 @@ tags: ["solidity", "hermes", "staking"]
 skill: intermediate
 published: 2022-05-14
 lang: en
-sidebar_position: 6
+sidebar_position: 9
 ---
 
 # HermesBar 

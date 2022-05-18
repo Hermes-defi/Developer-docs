@@ -7,7 +7,7 @@ tags: ["solidity", "hermes"]
 skill: intermediate
 published: 2022-05-14
 lang: en
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # HermesToken  

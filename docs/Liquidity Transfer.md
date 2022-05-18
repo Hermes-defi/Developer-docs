@@ -7,6 +7,7 @@ tags: ["solidity", "hermes", "staking"]
 skill: intermediate
 published: 2022-05-14
 lang: en
+sidebar_position: 11
 ---
 
 # LiquidityTransferService - Move fees
