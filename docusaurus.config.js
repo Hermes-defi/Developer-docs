@@ -72,7 +72,7 @@ const config = {
             docId: 'intro',
             position: 'left',
             label: 'Contracts',
-          },
+          },         
           // {to: '/blog', label: 'Blog', position: 'left'},
           /*{
             type: 'doc',
