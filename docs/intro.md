@@ -44,6 +44,8 @@ We advise you to read it in the following order for better understanding. Howeve
 9. [Hermes Bar](https://hermes-defi.github.io/Developer-docs/docs/Hermes%20Bar)
 10. [Distributor](https://hermes-defi.github.io/Developer-docs/docs/Distributor)
 11. [Liquidity TransferService](https://hermes-defi.github.io/Developer-docs/docs/Liquidity%20Transfer)
+12. [Timelock](https://hermes-defi.github.io/Developer-docs/docs/Timelock)
+13. [Vesting](https://hermes-defi.github.io/Developer-docs/docs/Vesting)
 
 ## App
 
