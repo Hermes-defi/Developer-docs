@@ -3,7 +3,7 @@ id: getting-started
 title: Getting Started
 ---
 
-The pages that follow contain technical reference information on the Uniswap SDK.
+The pages that follow contain technical reference information on the Hermes Dex SDK.
 Looking for a [quick start](../guides/quick-start) instead?
 You may also want to jump into a [guide](../guides/fetching-data),
 which offers a friendlier introduction to the SDK!
@@ -27,11 +27,11 @@ The SDK works for all chains on which the [factory](../../../protocol/V2/referen
 
 ## Code
 
-The [source code is available on GitHub](https://github.com/Uniswap/uniswap-sdk).
+The [source code is available on GitHub](https://github.com/Hermes-defi/hermes-sdk).
 
 ## Dependencies
 
-The SDK declares its dependencies as [peer dependencies](https://github.com/Uniswap/uniswap-sdk/blob/v2/package.json#L33).
+The SDK declares its dependencies as [peer dependencies](https://github.com/Hermes-defi/hermes-sdk/blob/main/package.json#L34).
 This is for two reasons:
 
 - prevent installation of unused dependencies (e.g. `@ethersproject/providers` and `@ethersproject/contracts`, only used in [`Fetcher`](fetcher))
