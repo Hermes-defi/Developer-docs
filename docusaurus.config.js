@@ -18,8 +18,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  // organizationName: 'Hermes-defi', // Usually your GitHub org/user name.
-  organizationName: 'pythinking', // Usually your GitHub org/user name.
+  organizationName: 'Hermes-defi', // Usually your GitHub org/user name.
+  // organizationName: 'pythinking', // Usually your GitHub org/user name.
   projectName: 'Developer-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -103,10 +103,6 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/hermesdefi',
-              },
-              {
                 label: 'Discord',
                 href: 'https://discord.gg/CsNtpfFqST',
               },
@@ -130,7 +126,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Hermes Defi. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
