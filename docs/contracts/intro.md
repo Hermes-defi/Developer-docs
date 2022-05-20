@@ -32,18 +32,18 @@ Get started by **deploy a Hermes contract**.
 
 We advise you to read it in the following order for better understanding. However, feel free to read in the order that suits you best.
 
-1. [Hemes Token](https://hermes-defi.github.io/Developer-docs/docs/Hermes%20Token)
-2. [Hermes Swap](https://hermes-defi.github.io/Developer-docs/docs/Hermes%20Swap)
-3. [MasterChefV2](https://hermes-defi.github.io/Developer-docs/docs/MasterChefHermesV2)
-4. [Dual Farms](https://hermes-defi.github.io/Developer-docs/docs/Dual%20Farms)
-5. [Staking](https://hermes-defi.github.io/Developer-docs/docs/Staking)
-6. [SingleStakingPool](https://hermes-defi.github.io/Developer-docs/docs/SingleStakingPool)
-7. [StableHermesStaking](https://hermes-defi.github.io/Developer-docs/docs/StableHermesStaking)
-8. [Hermes Bar](https://hermes-defi.github.io/Developer-docs/docs/Hermes%20Bar)
-9. [Distributor](https://hermes-defi.github.io/Developer-docs/docs/Distributor)
-10. [Liquidity TransferService](https://hermes-defi.github.io/Developer-docs/docs/Liquidity%20Transfer)
-11. [Timelock](https://hermes-defi.github.io/Developer-docs/docs/Timelock)
-12. [Vesting](https://hermes-defi.github.io/Developer-docs/docs/Vesting)
+1. [Hemes Token](./Hermes%20Token)
+2. [Hermes Swap](./Hermes%20Swap)
+3. [MasterChefV2](./MasterChefHermesV2)
+4. [Dual Farms](./Dual%20Farms)
+5. [Staking](./Staking)
+6. [SingleStakingPool](./SingleStakingPool)
+7. [StableHermesStaking](./StableHermesStaking)
+8. [Hermes Bar](./Hermes%20Bar)
+9. [Distributor](./Distributor)
+10. [Liquidity TransferService](./Liquidity%20Transfer)
+11. [Timelock](./Timelock)
+12. [Vesting](./Vesting)
 
 ## App
 
