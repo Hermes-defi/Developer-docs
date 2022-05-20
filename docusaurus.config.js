@@ -1,6 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const baseUrl = process.env.BASE_URL || '/Developer-docs/';
+
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -9,7 +11,7 @@ const config = {
   title: 'Hermes Swap',
   tagline: 'Safe, transparent and fast. A platform at the level of the gods.',
   url: 'https://www.hermesdefi.io/',
-  baseUrl: '/Developer-docs/',
+  baseUrl: baseUrl,
   onBrokenLinks: 'warn', //'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
