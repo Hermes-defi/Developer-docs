@@ -1,9 +1,9 @@
 ---
-title: "Liquidity TransferService"
+title: 'Liquidity TransferService'
 description: How does the LiquidityTransferService contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes", "staking"]
+tags: ['solidity', 'hermes', 'staking']
 skill: intermediate
 published: 2022-05-14
 lang: en
@@ -12,7 +12,7 @@ sidebar_position: 11
 
 # LiquidityTransferService - Move fees
 
-LiquidityTransferService is contract to move liquidity from A to B. 
+LiquidityTransferService is contract to move liquidity from A to B.
 
 ## Data and Control Flows
 
@@ -21,16 +21,15 @@ This is the flow of data and control that happens when you perform the three mai
 1. Remove all liquidity from this contract
 2. Apove and transfer all liquidity to pairs on routerDst
 
-### LiquidityTransferService.sol 
+### LiquidityTransferService.sol
 
 [This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/LiquidityTransfer.sol) implements the
- HermesSwap's liquidity transfer service. 
+HermesSwap's liquidity transfer service.
 
- ```solidity
+```solidity
 pragma solidity 0.6.12;
 contract LiquidityTransferService {
 ```
-
 
 ```solidity
     using SafeMath for uint256;
@@ -47,26 +46,22 @@ but is instead `2^256-1`.
 
     Interface to tokens on source and destination
 
-
 ```solidity
     address public srcPair;
     address public dstPair;
 ```
 
-   
 ```solidity
     address public tokenA;
     address public tokenB;
 ```
-
-
 
 ```solidity
     uint public slippageBps = 50; // 0.5%
     address public admin;
 ```
 
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     constructor(
@@ -92,8 +87,7 @@ but is instead `2^256-1`.
     }
 ```
 
-    Initialize our variables. 
-
+    Initialize our variables.
 
 #### Events
 
@@ -114,7 +108,6 @@ but is instead `2^256-1`.
         slippageBps = points;
     }
 ```
-   
 
 ```solidity
    function run() external {
@@ -183,11 +176,10 @@ but is instead `2^256-1`.
 
     }
 ```
-    
 
 ##### Internal functions
 
-##### getLiquidityValue    
+##### getLiquidityValue
 
 ```solidity
    function getLiquidityValue(
@@ -202,8 +194,7 @@ but is instead `2^256-1`.
     }
 ```
 
-##### computeLiquidityValue    
-
+##### computeLiquidityValue
 
 ```solidity
    function computeLiquidityValue(

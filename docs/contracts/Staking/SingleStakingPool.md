@@ -1,21 +1,20 @@
 ---
-title: "SingleStakingPool"
+title: 'SingleStakingPool'
 description: How does the SingleStakingPool contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes", "staking"]
+tags: ['solidity', 'hermes', 'staking']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 7
 ---
 
-# SingleStakingPool 
+# SingleStakingPool
 
-[This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/SingleStakingPool.sol) is a representation of Single-stake. Single-stake pools is where only one type of token is needed to stake. No LP token-making is required, but the concept is similar to making a liquidity token (LP), and staking that LP in a farm to earn other tokens. 
+[This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/SingleStakingPool.sol) is a representation of Single-stake. Single-stake pools is where only one type of token is needed to stake. No LP token-making is required, but the concept is similar to making a liquidity token (LP), and staking that LP in a farm to earn other tokens.
 
-### SingleStakingPool.sol 
-
+### SingleStakingPool.sol
 
 ```solidity
 contract StakingPool is Ownable, Initializable {
@@ -43,6 +42,7 @@ contract StakingPool is Ownable, Initializable {
     }
 
 ```
+
 ```solidity
   IERC20 public STAKE_TOKEN;
 ```
@@ -64,11 +64,13 @@ contract StakingPool is Ownable, Initializable {
 ```solidity
   uint256 public totalStaked = 0;
 ```
+
     Keep track of number of tokens staked in case the contract earns reflect fees
 
 ```solidity
   PoolInfo public poolInfo;
 ```
+
     Info of each pool.
 
 ```solidity
@@ -95,9 +97,7 @@ contract StakingPool is Ownable, Initializable {
 
     The block number when mining ends.
 
-
 #### Events
-
 
 ```solidity
 event Deposit(address indexed user, uint256 amount);
@@ -110,8 +110,7 @@ event Deposit(address indexed user, uint256 amount);
     event EmergencySweepWithdraw(address indexed user, IERC20 indexed token, uint256 amount);
 ```
 
-
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     function initialize(
@@ -140,8 +139,6 @@ event Deposit(address indexed user, uint256 amount);
     }
 ```
 
-
-
 #### Externally Accessible Functions
 
 ##### getMultiplier
@@ -159,8 +156,8 @@ event Deposit(address indexed user, uint256 amount);
 ```
 
     Return reward multiplier over the given _from to _to block.
- 
-##### setBonusEndBlock    
+
+##### setBonusEndBlock
 
 ```solidity
    function setBonusEndBlock(uint256 _bonusEndBlock) external onlyOwner {
@@ -172,7 +169,7 @@ event Deposit(address indexed user, uint256 amount);
 
     _bonusEndBlock The block when rewards will end
 
-##### pendingReward    
+##### pendingReward
 
 ```solidity
    function pendingReward(address _user) external view returns (uint256) {
@@ -189,7 +186,7 @@ event Deposit(address indexed user, uint256 amount);
 
     View function to see pending Reward on frontend.
 
-##### updatePool    
+##### updatePool
 
 ```solidity
    function updatePool() public {
@@ -209,7 +206,7 @@ event Deposit(address indexed user, uint256 amount);
 
     Update reward variables of the given pool to be up-to-date.
 
-##### deposit    
+##### deposit
 
 ```solidity
    function deposit(uint256 _amount) public {
@@ -247,7 +244,7 @@ event Deposit(address indexed user, uint256 amount);
     sending the balance of the contract if the pending rewards are higher
     @param _amount The amount of staking tokens to deposit
 
-##### withdraw    
+##### withdraw
 
 ```solidity
    function withdraw(uint256 _amount) public {
@@ -280,10 +277,10 @@ event Deposit(address indexed user, uint256 amount);
     Withdraw rewards and/or staked tokens. Pass a 0 amount to withdraw only rewards
     @param _amount The amount of staking tokens to withdraw
 
-##### rewardBalance    
+##### rewardBalance
 
 ```solidity
-  
+
     function rewardBalance() public view returns (uint256) {
         uint256 balance = REWARD_TOKEN.balanceOf(address(this));
         if (STAKE_TOKEN == REWARD_TOKEN)
@@ -295,7 +292,7 @@ event Deposit(address indexed user, uint256 amount);
     Obtain the reward balance of this contract
     @return wei balace of conract
 
-##### depositRewards    
+##### depositRewards
 
 ```solidity
    function depositRewards(uint256 _amount) external {
@@ -305,10 +302,9 @@ event Deposit(address indexed user, uint256 amount);
     }
 ```
 
-    Deposit Rewards into contract   
+    Deposit Rewards into contract
 
-
-##### totalStakeTokenBalance    
+##### totalStakeTokenBalance
 
 ```solidity
   function totalStakeTokenBalance() public view returns (uint256) {
@@ -320,16 +316,17 @@ event Deposit(address indexed user, uint256 amount);
 
      Obtain the stake balance of this contract
 
-##### getStakeTokenFeeBalance    
+##### getStakeTokenFeeBalance
 
 ```solidity
   function getStakeTokenFeeBalance() public view returns (uint256) {
         return STAKE_TOKEN.balanceOf(address(this)) - totalStaked;
     }
 ```
+
     Obtain the stake token fees (if any) earned by reflect token
 
-##### setRewardPerBlock    
+##### setRewardPerBlock
 
 ```solidity
   function setRewardPerBlock(uint256 _rewardPerBlock) external onlyOwner {
@@ -337,9 +334,10 @@ event Deposit(address indexed user, uint256 amount);
         emit LogUpdatePool(bonusEndBlock, rewardPerBlock);
     }
 ```
+
     @param _rewardPerBlock The amount of reward tokens to be given per block
 
-##### skimStakeTokenFees    
+##### skimStakeTokenFees
 
 ```solidity
   function skimStakeTokenFees() external onlyOwner {
@@ -349,9 +347,10 @@ event Deposit(address indexed user, uint256 amount);
     }
 
 ```
+
     Remove excess stake tokens earned by reflect fees
 
-##### emergencyWithdraw    
+##### emergencyWithdraw
 
 ```solidity
   function emergencyWithdraw() external {
@@ -366,7 +365,7 @@ event Deposit(address indexed user, uint256 amount);
 
     Withdraw without caring about rewards. EMERGENCY ONLY.
 
-##### emergencyRewardWithdraw    
+##### emergencyRewardWithdraw
 
 ```solidity
   function emergencyRewardWithdraw(uint256 _amount) external onlyOwner {
@@ -379,7 +378,7 @@ event Deposit(address indexed user, uint256 amount);
 
     Withdraw reward. EMERGENCY ONLY.
 
-##### depositRewards    
+##### depositRewards
 
 ```solidity
   function sweepToken(IERC20 token) external onlyOwner {
@@ -396,8 +395,7 @@ event Deposit(address indexed user, uint256 amount);
 
 ##### Internal functions
 
-
-##### safeTransferReward    
+##### safeTransferReward
 
 ```solidity
 function safeTransferReward(address _to, uint256 _amount) internal {

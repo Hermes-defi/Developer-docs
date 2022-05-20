@@ -1,27 +1,27 @@
 ---
-title: "Hermes Swap"
+title: 'Hermes Swap'
 description: How does the Hermes-Swap contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes"]
+tags: ['solidity', 'hermes']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 4
 ---
 
-## Introduction 
+## Introduction
 
-Hermes-swap is the Core of Hermes Dex products. This set of contracts are used in several products, such as MasterChefV2, HermesBar, among others. 
+Hermes-swap is the Core of Hermes Dex products. This set of contracts are used in several products, such as MasterChefV2, HermesBar, among others.
 The purpose of this manual is to explain the operation of each part that makes up this set of utilities.
 
-## Basics 
+## Basics
 
 [Hermes-Swap](https://github.com/Hermes-defi/hermes-swap) can create an exchange market between any two ERC-20 tokens. In this
 article we will go over the source code for the contracts that implement this protocol and see why they are written
 this way.
 
-### What Does Hermes-Swap Do? 
+### What Does Hermes-Swap Do?
 
 Basically, there are two types of users: liquidity providers and traders.
 
@@ -37,8 +37,7 @@ percent as a reward for the liquidity pool.
 When liquidity providers want their assets back they can burn the pool tokens and receive back their tokens,
 including their share of the rewards.
 
-
-### Core Contracts vs Periphery Contracts 
+### Core Contracts vs Periphery Contracts
 
 HermesSwap is divided into two components, a core and a periphery. This division allows the core contracts,
 which hold the assets and therefore _have_ to be secure, to be simpler and easier to audit.
@@ -52,42 +51,41 @@ This is the flow of data and control that happens when you perform the three mai
 2. Add liquidity to the market and get rewarded with pair exchange ERC-20 liquidity tokens
 3. Burn ERC-20 liquidity tokens and get back the ERC-20 tokens that the pair exchange allows traders to exchange
 
-### Swap 
+### Swap
 
-#### Caller 
+#### Caller
 
 1. Provide the periphery account with an allowance in the amount to be swapped.
 2. Call one of the periphery contract's many swap functions (which one depends on whether ONE is involved
    or not, whether the trader specifies the amount of tokens to deposit or the amount of tokens to get back, etc).
    Every swap function accepts a `path`, an array of exchanges to go through.
 
-#### In the periphery contract (HermesRouter02.sol) 
+#### In the periphery contract (HermesRouter02.sol)
 
 3. Identify the amounts that need to be traded on each exchange along the path.
 4. Iterates over the path. For every exchange along the way it sends the input token and then calls the exchange's `swap` function.
    In most cases the destination address for the tokens is the next pair exchange in the path. In the final exchange it is the address
    provided by the trader.
 
-
-#### In the core contract (HermesPair.sol) 
+#### In the core contract (HermesPair.sol)
 
 5. Verify that the core contract is not being cheated and can maintain sufficient liquidity after the swap.
 6. See how many extra tokens we have in addition to the known reserves. That amount is the number of input tokens we received to exchange.
 7. Send the output tokens to the destination.
 8. Call `_update` to update the reserve amounts
 
-#### Back in the periphery contract (HermesRouter02.sol) 
+#### Back in the periphery contract (HermesRouter02.sol)
 
 9. Perform any necessary cleanup (for example, burn WONE tokens to get back ONE to send the trader)
 
-### Add Liquidity 
+### Add Liquidity
 
 #### Caller
 
 1. Provide the periphery account with an allowance in the amounts to be added to the liquidity pool.
 2. Call the periphery contract's addLiquidity function.
 
-#### In the periphery contract (HermesRouter02.sol) 
+#### In the periphery contract (HermesRouter02.sol)
 
 3. Create a new pair exchange if necessary
 4. If there is an existing pair exchange, calculate the amount of tokens to add. This is supposed to be identical value for
@@ -111,7 +109,7 @@ This is the flow of data and control that happens when you perform the three mai
 
 3. Send the liquidity tokens to the pair exchange
 
-#### In the core contract (HermesPair.sol) 
+#### In the core contract (HermesPair.sol)
 
 4. Send the destination address the underlying tokens in proportion to the burned tokens. For example if
    there are 1000 A tokens in the pool, 500 B tokens, and 90 liquidity tokens, and we receive 9 tokens
@@ -119,11 +117,11 @@ This is the flow of data and control that happens when you perform the three mai
 5. Burn the liquidity tokens
 6. Call `_update` to update the reserve amounts
 
-## The Core Contracts 
+## The Core Contracts
 
 These are the secure contracts which hold the liquidity.
 
-### HermesPair.sol 
+### HermesPair.sol
 
 [This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/hermesswap/HermesPair.sol) implements the
 actual pool that exchanges tokens. It is the core Hermesswap functionality.
@@ -284,7 +282,7 @@ In a modifier `_;` is the original function call (with all the parameters). Here
 
 After the main function returns, release the lock.
 
-#### Misc. functions 
+#### Misc. functions
 
 ```solidity
     function getReserves() public view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast) {
@@ -320,7 +318,7 @@ There are two ways in which an ERC-20 transfer call can report failure:
 
 If either of these conditions happen, revert.
 
-#### Events 
+#### Events
 
 ```solidity
     event Mint(address indexed sender, uint amount0, uint amount1);
@@ -353,7 +351,7 @@ Each token may be either sent to the exchange, or received from it.
 Finally, `Sync` is emitted every time tokens are added or withdrawn, regardless of the reason, to provide the latest reserve information
 (and therefore the exchange rate).
 
-#### Setup Functions 
+#### Setup Functions
 
 These functions are supposed to be called once when the new pair exchange is set up.
 
@@ -377,7 +375,7 @@ information is required for `initialize` and for the factory fee (if one exists)
 
 This function allows the factory (and only the factory) to specify the two ERC-20 tokens that this pair will exchange.
 
-#### Internal Update Functions 
+#### Internal Update Functions
 
 ##### \_update
 
@@ -481,7 +479,7 @@ fee requires new liquidity tokens to be minted and provided to the `feeTo` addre
                 if (rootK > rootKLast) {
 ```
 
-If there is new liquidity on which to collect a protocol fee. 
+If there is new liquidity on which to collect a protocol fee.
 
 ```solidity
                     uint numerator = totalSupply.mul(rootK.sub(rootKLast));
@@ -508,7 +506,7 @@ Use the `HermesERC20._mint` function to actually create the additional liquidity
     }
 ```
 
-If there is no fee set `kLast` to zero (if it isn't that already). 
+If there is no fee set `kLast` to zero (if it isn't that already).
 
 #### Externally Accessible Functions
 
@@ -556,7 +554,7 @@ fees.
         uint _totalSupply = totalSupply; // gas savings, must be defined here since totalSupply can update in _mintFee
         if (_totalSupply == 0) {
             address migrator = IHermesFactory(factory).migrator();
-                        
+
             if (msg.sender == migrator) {
                 liquidity = IMigrator(migrator).desiredLiquidity();
                 require(liquidity > 0 && liquidity != uint256(-1), "Bad desired liquidity");
@@ -710,7 +708,7 @@ If we can limit the number so we'll use the stack we use less gas. For more deta
 This transfer is optimistic, because we transfer before we are sure all the conditions are met. This is OK in Ethereum
 because if the conditions aren't met later in the call we revert out of it and any changes it created.
 
-```solidity           
+```solidity
             if (data.length > 0) IHermesCallee(to).hermesCall(msg.sender, amount0Out, amount1Out, data);
 
 ```
@@ -750,7 +748,7 @@ This is a sanity check to make sure we don't lose from the swap. There is no cir
 
 Update `reserve0` and `reserve1`, and if necessary the price accumulators and the timestamp and emit an event.
 
-##### Sync or Skim 
+##### Sync or Skim
 
 It is possible for the real balances to get out of sync with the reserves that the pair exchange thinks it has.
 There is no way to withdraw tokens without the contract's consent, but deposits are a different matter. An account
@@ -785,7 +783,7 @@ In that case there are two solutions:
 }
 ```
 
-### HermesFactory.sol 
+### HermesFactory.sol
 
 [This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/hermesswap/HermesFactory.sol) creates the pair
 exchanges.
@@ -822,7 +820,6 @@ The second variable, `allPairs`, is an array that includes all the addresses of 
 exchanges created by this factory. In Ethereum you cannot iterate over the content of a mapping,
 or get a list of all the keys, so this variable is the only way to know which exchanges this
 factory manages.
-
 
 ```solidity
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
@@ -1022,15 +1019,14 @@ From the digest and the signature we can get the address that signed it using
 
 If everything is OK, treat this as [an ERC-20 approve](https://eips.ethereum.org/EIPS/eip-20#approve).
 
-## The Periphery Contracts 
+## The Periphery Contracts
 
 The periphery contracts are the API (application program interface) for Hermesswap. They are available for external calls, either from
 other contracts or decentralized applications. You could call the core contracts directly, but that's more complicated and you
 might lose value if you make a mistake. The core contracts only contain tests to make sure they aren't cheated, not sanity checks
 for anybody else. Those are in the periphery so they can be updated as needed.
 
-
-### HermesRouter02.sol 
+### HermesRouter02.sol
 
 In most cases you would use Hermesswap through [https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/hermesswap/HermesRouter02.sol)..
 
@@ -1084,7 +1080,7 @@ The constructor just sets the immutable state variables.
 This function is called when we redeem tokens from the WONE contract back into ETH. Only the ONE contract we use is authorized
 to do that.
 
-#### Add Liquidity 
+#### Add Liquidity
 
 These functions add tokens to the pair exchange, which increases the liquidity pool.
 
@@ -1202,7 +1198,6 @@ If the optimal B amount is more than the desired B amount it means B tokens are 
 liquidity depositor thinks, so a higher amount is required. However, the desired amount is a maximum, so we cannot
 do that. Instead we calculate the optimal number of A tokens for the desired amount of B tokens.
 
-
 You could deposit liquidity directly into the core contract (using
 [HermesPair::mint](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/hermesswap/HermesPair.sol#L137)), but the core contract
 only checks that it is not getting cheated itself, so you run the risk of losing value if the exchange rate changes between the time
@@ -1296,7 +1291,7 @@ therefore the wrapping doesn't really happen.
 The user has already sent us the ONE, so if there is any extra left over (because the other token is less valuable
 than the user thought), we need to issue a refund.
 
-#### Remove Liquidity 
+#### Remove Liquidity
 
 These functions will remove liquidity and pay back the liquidity provider.
 
@@ -1822,8 +1817,7 @@ These are the same variants used for normal tokens, but they call `_swapSupporti
 
 These functions are just proxies that call the [HermesLibrary functions](#HermesLibrary).
 
-
-## The Libraries 
+## The Libraries
 
 The [SafeMath library](https://docs.openzeppelin.com/contracts/2.x/api/math) is well documented, so there's no need
 to document it here.
@@ -1876,7 +1870,7 @@ integers, so we ignore the fraction).
 }
 ```
 
-### Fixed Point Fractions (UQ112x112) 
+### Fixed Point Fractions (UQ112x112)
 
 This library handles fractions, which are normally not part of Ethereum arithmetic. It does this by encoding the number _x_
 as _x\*2^112_. This lets us use the original addition and subtraction opcodes without a change.
@@ -1916,7 +1910,7 @@ If we divide two `UQ112x112` values, the result is no longer multiplied by 2^112
 take an integer for the denominator. We would have needed to use a similar trick to do multiplication, but we
 don't need to do multiplication of `UQ112x112` values.
 
-### HermesLibrary 
+### HermesLibrary
 
 This library is used only by the periphery contracts
 
@@ -2137,4 +2131,3 @@ which allows an account to spend out the allowance provided by a different accou
 
 This function transfers ether to an account. Any call to a different contract can attempt to send ether. Because we
 don't need to actually call any function, we don't send any data with the call.
-

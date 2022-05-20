@@ -1,20 +1,20 @@
 ---
-title: "Distributor"
+title: 'Distributor'
 description: How does the Distributor contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes"]
+tags: ['solidity', 'hermes']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 10
 ---
 
-### Distributor.sol 
+### Distributor.sol
 
 [This contract](https://github.com/Hermes-defi/hermes-swap-fee-distributor/blob/master/contracts/Distributor.sol) is used for fee split and distribution to other vaults contracts.
 
- ```solidity
+```solidity
 pragma solidity 0.6.12;
 contract Distributor is Ownable {
 ```
@@ -27,7 +27,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
 ```solidity
     using EnumerableSet for EnumerableSet.AddressSet;
 ```
-
 
 ```solidity
     address public wone;
@@ -42,7 +41,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
     address public sHRMSAddress;
 ```
 
-
 ```solidity
     IHermesRouter02 public routerCtx;
 ```
@@ -55,8 +53,7 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
     EnumerableSet.AddressSet private allTokens;
 ```
 
-
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     constructor(
@@ -68,7 +65,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
         address _HRMS)
     {
 ```
-
 
 ```solidity
     router = _router;
@@ -103,21 +99,18 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
         return allTokens.length();
     }
 ```
-    
 
 ```solidity
    function pairAt(uint i) public view returns(address){
         return allTokens.at(i);
     }
 ```
-    
 
 ```solidity
   function pairContains(address pair) public view returns(bool){
         return allTokens.contains(pair);
     }
 ```
-   
 
 ```solidity
    function pairRemove(address pair) public onlyOwner {
@@ -143,9 +136,8 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
         _addNewToken(_token, _xHRMSPath, _sHRMSPath);
     }
 ```
-    
 
-##### _addNewToken    
+##### \_addNewToken
 
 ```solidity
    function _addNewToken(address _token, address[] memory _xHRMSPath, address[] memory _sHRMSPath) internal {
@@ -164,7 +156,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
 ```
 
 ##### run
-
 
 ```solidity
     function run() public {
@@ -198,8 +189,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
 
 ```
 
-    
-
 ```solidity
    function convertAll() public {
         uint length = factoryCtx.allPairsLength();
@@ -222,8 +211,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
         }
     }
 ```
-
-    
 
 ```solidity
    function convert(IERC20Hermes token) public {
@@ -252,8 +239,6 @@ mapping(address => address[]) public tokensWithPathForSHRMS;
     }
 
 ```
-
-
 
 ```solidity
    function splitAndSend() public {

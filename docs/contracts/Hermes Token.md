@@ -1,43 +1,39 @@
 ---
-title: "Hermes Token"
+title: 'Hermes Token'
 description: How does the HermesToken contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes"]
+tags: ['solidity', 'hermes']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 2
 ---
 
-# HermesToken  
+# HermesToken
 
-### HermesToken.sol 
+### HermesToken.sol
 
-[This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/HermesToken.sol) is a representation of IERC20 Hermes 
+[This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/HermesToken.sol) is a representation of IERC20 Hermes
 
- ```solidity
+```solidity
 pragma solidity >=0.8.0 <0.9.0;
 ```
-
 
 ```solidity
 contract Hermes is
     Ownable,
     ERC20("Hermes", "HRMS"),
     ERC20Capped(30000000 gwei),
-    AccessControl  
+    AccessControl
 ```
-
-
 
 ```solidity
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 ```
 
-
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     constructor() {
@@ -46,7 +42,6 @@ contract Hermes is
         _grantRole(BURNER_ROLE, msg.sender);
     }
 ```
-
 
 #### Externally Accessible Functions
 
@@ -60,8 +55,8 @@ contract Hermes is
         _burn(_account, amount);
     }
 ```
- 
-##### mint    
+
+##### mint
 
 ```solidity
    function mint(address _account, uint256 _amount)
@@ -73,7 +68,7 @@ contract Hermes is
     }
 ```
 
-##### grantMinterRole    
+##### grantMinterRole
 
 ```solidity
    function grantMinterRole(address _account)
@@ -84,7 +79,7 @@ contract Hermes is
     }
 ```
 
-##### grantBurnerRole    
+##### grantBurnerRole
 
 ```solidity
    function grantBurnerRole(address _account)
@@ -95,7 +90,7 @@ contract Hermes is
     }
 ```
 
-##### revokeMinterRole    
+##### revokeMinterRole
 
 ```solidity
    function revokeMinterRole(address _account)
@@ -106,7 +101,7 @@ contract Hermes is
     }
 ```
 
-##### revokeBurnerRole    
+##### revokeBurnerRole
 
 ```solidity
    function revokeBurnerRole(address _account)
@@ -117,10 +112,10 @@ contract Hermes is
     }
 ```
 
-##### transferOwnership    
+##### transferOwnership
 
 ```solidity
-  
+
     function transferOwnership(address newOwner)
         public
         virtual
@@ -136,10 +131,9 @@ contract Hermes is
     }
 ```
 
+##### Internal functions
 
-##### Internal functions   
-
-##### _mint    
+##### \_mint
 
 ```solidity
    function _mint(address account, uint256 amount)
@@ -151,4 +145,3 @@ contract Hermes is
         return super._mint(account, amount);
     }
 ```
-

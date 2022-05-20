@@ -1,49 +1,46 @@
 ---
-title: "Vesting"
+title: 'Vesting'
 description: How does the Vesting contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes"]
+tags: ['solidity', 'hermes']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 13
 ---
 
-# Vesting  
+# Vesting
 
-### Vesting.sol 
+### Vesting.sol
 
-[This contract](https://github.com/Hermes-defi/hermes-team-vest/blob/master/contracts/Vesting.sol)  lock in a certain amount of funds until the terms of the contract are fulfilled
+[This contract](https://github.com/Hermes-defi/hermes-team-vest/blob/master/contracts/Vesting.sol) lock in a certain amount of funds until the terms of the contract are fulfilled
 
- ```solidity
+```solidity
 pragma solidity ^0.8.4;
 ```
 
- ```solidity
-  import "@openzeppelin/contracts/access/Ownable.sol";
-  import "@openzeppelin/contracts/utils/Address.sol";
-  import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-  import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-  import "hardhat/console.sol";
+```solidity
+ import "@openzeppelin/contracts/access/Ownable.sol";
+ import "@openzeppelin/contracts/utils/Address.sol";
+ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+ import "hardhat/console.sol";
 ```
-
 
 ```solidity
 contract HermesVesting is Ownable {
 ```
 
-```solidity  
+```solidity
   using SafeERC20 for IERC20;
 ```
 
     SafeERC20 is a wrapper around the interface that eliminates the need to handle boolean return values. TokenTimelock can hold tokens for a beneficiary until a specified time.
 
-
 ```solidity
   using Address for address;
 ```
-
 
 #### Events
 
@@ -54,7 +51,7 @@ contract HermesVesting is Ownable {
         uint256 amount,
         uint256 startEpoch,
         uint256 durationInEpoch
-    );    
+    );
 ```
 
     Emmited when a new vest is created
@@ -83,11 +80,10 @@ contract HermesVesting is Ownable {
 
     Struct to keep the vesting informations
 
-
 #### Variables
 
 ```solidity
-    uint256 public startTime;                    
+    uint256 public startTime;
 ```
 
     The timestamp that the contract can start working
@@ -109,7 +105,6 @@ contract HermesVesting is Ownable {
 ```
 
     A array of vestings structs
-    
 
 ```solidity
     bool freeClaimed;
@@ -123,8 +118,7 @@ contract HermesVesting is Ownable {
 
     The list of all vestings address
 
-
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     constructor(
@@ -139,7 +133,6 @@ contract HermesVesting is Ownable {
 ```
 
     Start the contract setting the hermes token, the start of contract execution and the epoch lenght
-
 
 #### Externally Accessible Functions
 
@@ -159,8 +152,8 @@ contract HermesVesting is Ownable {
     }
 
 ```
- 
-##### currentEpoch    
+
+##### currentEpoch
 
 ```solidity
     function currentEpoch() public view returns (uint256) {
@@ -174,7 +167,7 @@ contract HermesVesting is Ownable {
 
     Returns the current epoch
 
-##### createVesting    
+##### createVesting
 
 ```solidity
    function createVesting(
@@ -214,10 +207,9 @@ contract HermesVesting is Ownable {
     }
 ```
 
-
     Create a new vesting
 
-##### setPendingAdmin    
+##### setPendingAdmin
 
 ```solidity
    function vestingsByAddress(address user)
@@ -229,10 +221,9 @@ contract HermesVesting is Ownable {
     }
 ```
 
-
     Set the new admin
 
-##### claimable    
+##### claimable
 
 ```solidity
    function claimable(uint256 vestingId) external view returns (uint256) {
@@ -245,10 +236,10 @@ contract HermesVesting is Ownable {
 
     Check if the vesting is claimable
 
-##### claim    
+##### claim
 
 ```solidity
-  
+
     function claim(uint256 vestingId) external {
         require(vestingId < vestings.length, "Invalid index!");
 
@@ -268,10 +259,9 @@ contract HermesVesting is Ownable {
 
     Clain the vest and transfer the tokens
 
+##### Internal functions
 
-##### Internal functions   
-
-##### _claimable    
+##### \_claimable
 
 ```solidity
    function _claimable(uint256 vestingId) internal view returns (uint256) {
@@ -295,4 +285,3 @@ contract HermesVesting is Ownable {
 
     Check if a vesting is claimable
 ```
-

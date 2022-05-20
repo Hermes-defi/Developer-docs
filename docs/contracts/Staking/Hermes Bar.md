@@ -1,20 +1,20 @@
 ---
-title: "Hermes Bar"
+title: 'Hermes Bar'
 description: How does the HermesBar contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes", "staking"]
+tags: ['solidity', 'hermes', 'staking']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 9
 ---
 
-# HermesBar 
+# HermesBar
 
 HermesBar is a stacking contract that permit you invest some money, though HERMES token and gain xHERMESS in exchange.
 
-The longer the token stays in the contract, the greater the possibility won. 
+The longer the token stays in the contract, the greater the possibility won.
 
 The user will be able to request their tokens at any time and receive the reward.
 
@@ -26,12 +26,12 @@ This is the flow of data and control that happens when you perform the three mai
 2. The caller can take them tokens any moment
 3. Claim back your HERMESs. Unlocks the staked + gained Hermes and burns xHermes
 
-### HermesBar.sol 
+### HermesBar.sol
 
 [This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/HermesBar.sol) implements the
- HermesSwap's staking.
+HermesSwap's staking.
 
- ```solidity
+```solidity
 pragma solidity 0.6.12;
 contract HermesBar is ERC20("HermesBar", "xHERMES") {
 ```
@@ -52,7 +52,7 @@ but is instead `2^256-1`.
 
 The Hermes token.
 
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     constructor(IERC20 _hermes) public {
@@ -69,8 +69,9 @@ This contract inherits from `IERC20`, which provides the the ERC-20 functions fo
 ```solidity
    function enter(uint256 _amount) public {
        uint256 totalHermes = hermes.balanceOf(address(this));
-       uint256 totalShares = totalSupply();       
+       uint256 totalShares = totalSupply();
 ```
+
     This function is called when a liquidity provider adds liquidity to the contract ("xHERMES").
     Gets the amount of Hermes locked in the contract and gets the amount of xHermes in existence
 
@@ -79,6 +80,7 @@ This contract inherits from `IERC20`, which provides the the ERC-20 functions fo
             _mint(msg.sender, _amount);
         }
 ```
+
     If no xHermes exists, mint it 1:1 to the amount put in
 
 ```solidity
@@ -87,14 +89,16 @@ This contract inherits from `IERC20`, which provides the the ERC-20 functions fo
             _mint(msg.sender, what);
         }
 ```
+
     Calculate and mint the amount of xHermes the Hermes is worth. The ratio will change overtime, as xHermes is burned/minted and Hermes deposited + gained from fees / withdrawn.
 
 ```solidity
    hermes.transferFrom(msg.sender, address(this), _amount);
 ```
+
     Lock the Hermes in the contract
 
-##### leave    
+##### leave
 
 ```solidity
    function leave(uint256 _share) public {
@@ -120,7 +124,7 @@ This contract inherits from `IERC20`, which provides the the ERC-20 functions fo
    _burn(msg.sender, _share);
 ```
 
-    Burn the requested tokens 
+    Burn the requested tokens
 
 ```solidity
    hermes.transfer(msg.sender, what);

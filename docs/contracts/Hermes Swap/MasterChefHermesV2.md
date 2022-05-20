@@ -1,14 +1,13 @@
 ---
-title: "MasterChefV2"
+title: 'MasterChefV2'
 description: How does the MasterChefV2 contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes"]
+tags: ['solidity', 'hermes']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 3
-
 ---
 
 # MasterChefHermesV2 and Double Reward Farms
@@ -143,7 +142,7 @@ yarn test:coverage --testfiles "test/MasterChefHermesV2.test.ts"
 
 | File                               | Statements | Branches |
 | ---------------------------------- | ---------- | -------- |
-| MasterChefHermesV2.sol                | 100%       | 100%     |
+| MasterChefHermesV2.sol             | 100%       | 100%     |
 | SimpleRewarderPerBlock.sol         | 100%       | 93.75%   |
 | SimpleRewarerPerSec.sol            | 100%       | 93.75%   |
 | MasterChefRewarderPerBlockMock.sol | 98.28%     | 90.91%   |

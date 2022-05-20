@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Intro
 
-**Hermes-swap** is the Core of Hermes Dex products. This set of contracts are used in several products, such as MasterChefV2, HermesBar, among others. 
+**Hermes-swap** is the Core of Hermes Dex products. This set of contracts are used in several products, such as MasterChefV2, HermesBar, among others.
 The purpose of this manual is to explain the operation of each part that makes up this set of utilities.
 
 # Documentation
@@ -20,13 +20,11 @@ The first command is to remove the folder that you have cloned before, ensure th
 5. npx docusaurus build
 6. GIT_USER=valleyrider yarn deploy
 
-(paste your gpg personal token and press enter) 
+(paste your gpg personal token and press enter)
 
 ## Video
 
-
 Please check our video for https://drive.google.com/file/d/1fTbo20-scaz3Z3SyImP-wq_DkGT0H9hw/view?usp=sharing
-
 
 ## Getting Started
 
@@ -40,26 +38,26 @@ We advise you to read it in the following order for better understanding. Howeve
 4. [Dual Farms](https://hermes-defi.github.io/Developer-docs/docs/Dual%20Farms)
 5. [Staking](https://hermes-defi.github.io/Developer-docs/docs/Staking)
 6. [SingleStakingPool](https://hermes-defi.github.io/Developer-docs/docs/SingleStakingPool)
-8. [StableHermesStaking](https://hermes-defi.github.io/Developer-docs/docs/StableHermesStaking)
-9. [Hermes Bar](https://hermes-defi.github.io/Developer-docs/docs/Hermes%20Bar)
-10. [Distributor](https://hermes-defi.github.io/Developer-docs/docs/Distributor)
-11. [Liquidity TransferService](https://hermes-defi.github.io/Developer-docs/docs/Liquidity%20Transfer)
-12. [Timelock](https://hermes-defi.github.io/Developer-docs/docs/Timelock)
-13. [Vesting](https://hermes-defi.github.io/Developer-docs/docs/Vesting)
+7. [StableHermesStaking](https://hermes-defi.github.io/Developer-docs/docs/StableHermesStaking)
+8. [Hermes Bar](https://hermes-defi.github.io/Developer-docs/docs/Hermes%20Bar)
+9. [Distributor](https://hermes-defi.github.io/Developer-docs/docs/Distributor)
+10. [Liquidity TransferService](https://hermes-defi.github.io/Developer-docs/docs/Liquidity%20Transfer)
+11. [Timelock](https://hermes-defi.github.io/Developer-docs/docs/Timelock)
+12. [Vesting](https://hermes-defi.github.io/Developer-docs/docs/Vesting)
 
 ## App
 
 **try Hermes immediately** with **[hermes defi website](https://www.hermesdefi.io/)**.
 
-
 ### Tools
 
 - [Node.js](https://nodejs.org/en/download/) version 14 or above:
+
   - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
 - [Solidity](https://docs.soliditylang.org/en/v0.8.13/installing-solidity.html):
+
   - When installing Solidity, you are recommended to check all checkboxes related to dependencies.
 
 - [Hardhat](https://hardhat.org/getting-started/):
   - Hardhat is a development environment to compile, deploy, test, and debug your Ethereum software.
-

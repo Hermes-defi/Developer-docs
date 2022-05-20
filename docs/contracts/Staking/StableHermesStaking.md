@@ -1,29 +1,27 @@
 ---
-title: "StableHermesStaking"
+title: 'StableHermesStaking'
 description: How does the StableHermesStaking contract work? Why is it written that way?
 author: Hermes Team
 sidebar: true
-tags: ["solidity", "hermes", "stacking"]
+tags: ['solidity', 'hermes', 'stacking']
 skill: intermediate
 published: 2022-05-14
 lang: en
 sidebar_position: 8
 ---
 
-# StableHermesStaking 
+# StableHermesStaking
 
-  StableHermesStaking is a contract that allows HERMES deposits and receives stablecoins sent by MoneyMaker's daily
-  harvests. Users deposit HERMES and receive a share of what has been sent by MoneyMaker based on their participation of
-  the total deposited HERMES. It is similar to a MasterChef, but we allow for claiming of different reward tokens
-  (in case at some point we wish to change the stablecoin rewarded).
-  Every time `updateReward(token)` is called, We distribute the balance of that tokens as rewards to users that are
-  currently staking inside this contract, and they can claim it using `withdraw(0)`
+StableHermesStaking is a contract that allows HERMES deposits and receives stablecoins sent by MoneyMaker's daily
+harvests. Users deposit HERMES and receive a share of what has been sent by MoneyMaker based on their participation of
+the total deposited HERMES. It is similar to a MasterChef, but we allow for claiming of different reward tokens
+(in case at some point we wish to change the stablecoin rewarded).
+Every time `updateReward(token)` is called, We distribute the balance of that tokens as rewards to users that are
+currently staking inside this contract, and they can claim it using `withdraw(0)`
 
+### StableHermesStaking.sol
 
-### StableHermesStaking.sol 
-
-[This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/StableHermesStaking.sol) 
-
+[This contract](https://github.com/Hermes-defi/hermes-swap/blob/main/contracts/StableHermesStaking.sol)
 
 ```solidity
 contract StableHermesStaking is Ownable
@@ -37,36 +35,38 @@ contract StableHermesStaking is Ownable
 ```solidity
  struct UserInfo {
         uint256 amount;
-        mapping(IERC20 => uint256) rewardDebt;       
+        mapping(IERC20 => uint256) rewardDebt;
     }
 ```
- 
- We do some fancy math here. Basically, any point in time, the amount of HERMESs
- entitled to a user but is pending to be distributed is:
 
-   pending reward = (user.amount * accRewardPerShare) - user.rewardDebt[token]
+We do some fancy math here. Basically, any point in time, the amount of HERMESs
+entitled to a user but is pending to be distributed is:
 
- Whenever a user deposits or withdraws HERMES. Here's what happens:
-   1. accRewardPerShare (and `lastRewardBalance`) gets updated
-   2. User receives the pending reward sent to his/her address
-   3. User's `amount` gets updated
-   4. User's `rewardDebt[token]` gets updated
+pending reward = (user.amount \* accRewardPerShare) - user.rewardDebt[token]
 
+Whenever a user deposits or withdraws HERMES. Here's what happens:
+
+1.  accRewardPerShare (and `lastRewardBalance`) gets updated
+2.  User receives the pending reward sent to his/her address
+3.  User's `amount` gets updated
+4.  User's `rewardDebt[token]` gets updated
 
 ```solidity
   IERC20 public hermes;
 ```
+
 ```solidity
   uint256 internalHermesBalance;
 ```
-  Internal balance of HERMES, this gets updated on user deposits / withdrawals
-  this allows to reward users with HERMES.
+
+Internal balance of HERMES, this gets updated on user deposits / withdrawals
+this allows to reward users with HERMES.
 
 ```solidity
   IERC20[] public rewardTokens;
 ```
 
-  Array of tokens that users can claim
+Array of tokens that users can claim
 
 ```solidity
   mapping(IERC20 => bool) public isRewardToken;
@@ -75,7 +75,8 @@ contract StableHermesStaking is Ownable
 ```solidity
   mapping(IERC20 => uint256) public lastRewardBalance;
 ```
-  Last reward balance of `token`
+
+Last reward balance of `token`
 
 ```solidity
   address public feeCollector;
@@ -85,18 +86,19 @@ contract StableHermesStaking is Ownable
   uint256 public depositFeePercent;
 ```
 
-  The deposit fee, scaled to `PRECISION`
+The deposit fee, scaled to `PRECISION`
 
 ```solidity
   mapping(IERC20 => uint256) public accRewardPerShare;
 ```
 
-  Accumulated `token` rewards per share, scaled to `PRECISION`. See above
+Accumulated `token` rewards per share, scaled to `PRECISION`. See above
 
 ```solidity
   uint256 public PRECISION;
 ```
-  PRECISION of accRewardPerShare
+
+PRECISION of accRewardPerShare
 
 ```solidity
   mapping(address => UserInfo) private userInfo;
@@ -109,21 +111,25 @@ Info of each user that stakes HERMES
 ```solidity
   event Deposit(address indexed user, uint256 amount, uint256 fee);
 ```
+
 Emitted when a user deposits HERMES
 
 ```solidity
   event DepositFeeChanged(uint256 newFee, uint256 oldFee);
 ```
+
 Emitted when owner changes the deposit fee percentage
 
 ```solidity
   event Withdraw(address indexed user, uint256 amount);
 ```
+
 Emitted when a user withdraws HERMES
 
 ```solidity
   event ClaimReward(address indexed user, address indexed rewardToken, uint256 amount);
 ```
+
 Emitted when a user claims reward
 
 ```solidity
@@ -135,6 +141,7 @@ Emitted when a user emergency withdraws its HERMES
 ```solidity
   event RewardTokenAdded(address token);
 ```
+
 Emitted when owner adds a token to the reward tokens list
 
 ```solidity
@@ -143,8 +150,7 @@ Emitted when owner adds a token to the reward tokens list
 
 Emitted when owner removes a token from the reward tokens list
 
-
-#### Setup Functions 
+#### Setup Functions
 
 ```solidity
     constructor(
@@ -166,11 +172,11 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-  Initialize a new StableHermesStaking contract
-  This contract needs to receive an ERC20 `_rewardToken` in order to distribute them (with MoneyMaker in our case)
-  @param _rewardToken The address of the ERC20 reward token
-  @param _hermes The address of the HERMES token
-  @param _depositFeePercent The deposit fee percent, scalled to 1e18, e.g. 3% is 3e16     
+Initialize a new StableHermesStaking contract
+This contract needs to receive an ERC20 `_rewardToken` in order to distribute them (with MoneyMaker in our case)
+@param \_rewardToken The address of the ERC20 reward token
+@param \_hermes The address of the HERMES token
+@param \_depositFeePercent The deposit fee percent, scalled to 1e18, e.g. 3% is 3e16
 
 #### Externally Accessible Functions
 
@@ -211,10 +217,10 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-  Deposit HERMES for reward token allocation
-  @param _amount The amount of HERMES to deposit
- 
-##### getUserInfo    
+Deposit HERMES for reward token allocation
+@param \_amount The amount of HERMES to deposit
+
+##### getUserInfo
 
 ```solidity
    function getUserInfo(address _user, IERC20 _rewardToken) external view returns (uint256, uint256) {
@@ -223,15 +229,14 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-
     Get user info
     @param _user The address of the user
     @param _rewardToken The address of the reward token
     @return The amount of HERMES user has deposited
     @return The reward debt for the chosen token
-     
 
-##### rewardTokensLength    
+
+##### rewardTokensLength
 
 ```solidity
    function rewardTokensLength() external view returns (uint256) {
@@ -242,7 +247,7 @@ Emitted when owner removes a token from the reward tokens list
     Get the number of reward tokens
     @return The length of the array
 
-##### addRewardToken    
+##### addRewardToken
 
 ```solidity
    function addRewardToken(IERC20 _rewardToken) external onlyOwner {
@@ -258,10 +263,10 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-  Add a reward token
-  @param _rewardToken The address of the reward token
+Add a reward token
+@param \_rewardToken The address of the reward token
 
-##### removeRewardToken    
+##### removeRewardToken
 
 ```solidity
    function removeRewardToken(IERC20 _rewardToken) external onlyOwner {
@@ -283,7 +288,7 @@ Emitted when owner removes a token from the reward tokens list
     Remove a reward token
     @param _rewardToken The address of the reward token
 
-##### setDepositFeePercent    
+##### setDepositFeePercent
 
 ```solidity
    function setDepositFeePercent(uint256 _depositFeePercent) external onlyOwner {
@@ -297,10 +302,10 @@ Emitted when owner removes a token from the reward tokens list
     Set the deposit fee percent
     @param _depositFeePercent The new deposit fee percent
 
-##### pendingReward    
+##### pendingReward
 
 ```solidity
-  
+
     function pendingReward(address _user, IERC20 _token) external view returns (uint256) {
         require(isRewardToken[_token], "StableHermesStaking: wrong reward token");
         UserInfo storage user = userInfo[_user];
@@ -318,13 +323,12 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
+View function to see pending reward token on frontend
+@param \_user The address of the user
+@param \_token The address of the token
+@return `_user`'s pending reward token
 
-  View function to see pending reward token on frontend
-  @param _user The address of the user
-  @param _token The address of the token
-  @return `_user`'s pending reward token
-
-##### withdraw    
+##### withdraw
 
 ```solidity
    function withdraw(uint256 _amount) external {
@@ -359,10 +363,10 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-  Withdraw HERMES and harvest the rewards
-  @param _amount The amount of HERMES to withdraw
+Withdraw HERMES and harvest the rewards
+@param \_amount The amount of HERMES to withdraw
 
-##### emergencyWithdraw    
+##### emergencyWithdraw
 
 ```solidity
   function emergencyWithdraw() external {
@@ -380,9 +384,9 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-  Withdraw without caring about rewards. EMERGENCY ONLY
+Withdraw without caring about rewards. EMERGENCY ONLY
 
-##### updateReward    
+##### updateReward
 
 ```solidity
   function updateReward(IERC20 _token) public {
@@ -406,15 +410,13 @@ Emitted when owner removes a token from the reward tokens list
 
 ```
 
-  Update reward variables
-  @param _token The address of the reward token
-  @dev Needs to be called before any deposit or withdrawal
-
+Update reward variables
+@param \_token The address of the reward token
+@dev Needs to be called before any deposit or withdrawal
 
 ##### Internal functions
 
-
-##### safeTokenTransfer    
+##### safeTokenTransfer
 
 ```solidity
   function safeTokenTransfer(
@@ -435,8 +437,8 @@ Emitted when owner removes a token from the reward tokens list
     }
 ```
 
-  Safe token transfer function, just in case if rounding error
-  causes pool to not have enough reward tokens
-  @param _token The address of then token to transfer
-  @param _to The address that will receive `_amount` `rewardToken`
-  @param _amount The amount to send to `_to`
+Safe token transfer function, just in case if rounding error
+causes pool to not have enough reward tokens
+@param \_token The address of then token to transfer
+@param \_to The address that will receive `_amount` `rewardToken`
+@param \_amount The amount to send to `_to`
