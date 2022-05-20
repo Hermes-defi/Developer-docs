@@ -10,7 +10,7 @@ const config = {
   tagline: 'Safe, transparent and fast. A platform at the level of the gods.',
   url: 'https://www.hermesdefi.io/',
   baseUrl: '/Developer-docs/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', //'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
@@ -93,7 +93,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/docs/contracts/intro',
               },
             ],
           },
