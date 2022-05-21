@@ -43,7 +43,7 @@ const pair = new Pair(
 getAddress(tokenA: Token, tokenB: Token): string
 ```
 
-Computes the pair address for the passed [Tokens](token). See [Pair Addresses](../../../protocol/V2/guides/smart-contract-integration/getting-pair-addresses).
+Computes the pair address for the passed [Tokens](token). See [Pair Addresses](../guides/getting-pair-addresses).
 
 # Properties
 
@@ -53,7 +53,7 @@ Computes the pair address for the passed [Tokens](token). See [Pair Addresses](.
 liquidityToken: Token;
 ```
 
-A Token representing the liquidity token for the pair. See [Pair (ERC-20)](../../../protocol/V2/reference/smart-contracts/pair-erc-20).
+A Token representing the liquidity token for the pair. See [Pair (ERC-20)](../../contracts/Hermes%20Swap/#hermespairsol).
 
 ## token0
 
@@ -61,7 +61,7 @@ A Token representing the liquidity token for the pair. See [Pair (ERC-20)](../..
 token0: Token;
 ```
 
-See [Token0](../../../protocol/V2/reference/smart-contracts/pair#token0).
+See [Token0](../../contracts/Hermes%20Swap/#hermespairsol).
 
 ## token1
 
@@ -69,7 +69,7 @@ See [Token0](../../../protocol/V2/reference/smart-contracts/pair#token0).
 token1: Token;
 ```
 
-See [Token1](../../../protocol/V2/reference/smart-contracts/pair#token1).
+See [Token1](../../contracts/Hermes%20Swap/#hermespairsol).
 
 ## reserve0
 

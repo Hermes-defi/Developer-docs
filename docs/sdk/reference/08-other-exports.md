@@ -67,7 +67,7 @@ A enum denominating supported rounding options.
 import { FACTORY_ADDRESS } from '@hermesdefiofficial/sdk';
 ```
 
-The [factory address](../../../protocol/V2/reference/smart-contracts/factory#address).
+The [factory address](../../contracts/Hermes%20Swap/#hermesfactorysol).
 
 # INIT_CODE_HASH
 
@@ -75,7 +75,7 @@ The [factory address](../../../protocol/V2/reference/smart-contracts/factory#add
 import { INIT_CODE_HASH } from '@hermesdefiofficial/sdk';
 ```
 
-See [pair addresses](../../../protocol/V2/guides/smart-contract-integration/getting-pair-addresses).
+See [pair addresses](../../contracts/Hermes%20Swap/#hermespairsol).
 
 # MINIMUM_LIQUIDITY
 
@@ -83,7 +83,7 @@ See [pair addresses](../../../protocol/V2/guides/smart-contract-integration/gett
 import { MINIMUM_LIQUIDITY } from '@hermesdefiofficial/sdk';
 ```
 
-See [minimum liquidity](../../../protocol/V2/reference/smart-contracts/pair#minimum-liquidity).
+See [minimum liquidity](../../contracts/Hermes%20Swap/#hermespairsol).
 
 # InsufficientReservesError
 
@@ -103,4 +103,4 @@ import { InsufficientInputAmountError } from '@hermesdefiofficial/sdk';
 import { WETH } from '@hermesdefiofficial/sdk';
 ```
 
-An object whose values are [WETH](../../../protocol/V2/reference/smart-contracts/router-02#weth) [Token](token) instances, indexed by [ChainId](#chainid).
+An object whose values are [WETH](../../contracts/Hermes%20Swap/#hermesrouter02sol) [Token](token) instances, indexed by [ChainId](#chainid).

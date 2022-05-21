@@ -18,7 +18,7 @@ As an example, let's try to represent DAI in a format the SDK can work with. To 
 
 The first two pieces of data — **chainId** and **token address** — must be provided by us. Thinking about it, this makes sense, as there's really no other way to unambiguously identify a token.
 
-So, in the case of DAI, we know that the **chainId** is `1` (we're on mainnet), and the **token address** is `0x6B175474E89094C44Da98b954EedeAC495271d0F`. Note that it's very important to externally verify token addresses. Don't use addresses from sources you don't trust!
+So, in the case of DAI, we know that the **chainId** is `1` (we're on mainnet), and the **token address** is `0xEf977d2f931C1978Db5F6747666fa1eACB0d0339`. Note that it's very important to externally verify token addresses. Don't use addresses from sources you don't trust!
 
 ## Required Data
 
@@ -32,7 +32,7 @@ One option here is to simply pass in the correct value, which we may know is `18
 import { ChainId, Token } from '@hermesdefiofficial/sdk';
 
 const chainId = ChainId.MAINNET;
-const tokenAddress = '0x6B175474E89094C44Da98b954EedeAC495271d0F'; // must be checksummed
+const tokenAddress = '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339'; // must be checksummed
 const decimals = 18;
 
 const DAI = new Token(chainId, tokenAddress, decimals);
@@ -59,7 +59,7 @@ If we don't want to provide or look up the value ourselves, we can ask the SDK t
 import { ChainId, Token, Fetcher } from '@hermesdefiofficial/sdk';
 
 const chainId = ChainId.MAINNET;
-const tokenAddress = '0x6B175474E89094C44Da98b954EedeAC495271d0F'; // must be checksummed
+const tokenAddress = '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339'; // must be checksummed
 
 // note that you may want/need to handle this async code differently,
 // for example if top-level await is not an option
@@ -79,7 +79,7 @@ import { ChainId, Token } from '@hermesdefiofficial/sdk';
 
 const DAI = new Token(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339',
   18,
   'DAI',
   'Dai Stablecoin'
@@ -95,7 +95,7 @@ import { ChainId, Token, Fetcher } from '@hermesdefiofficial/sdk';
 // for example if top-level await is not an option
 const DAI = await Fetcher.fetchTokenData(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339',
   undefined,
   'DAI',
   'Dai Stablecoin'
@@ -106,7 +106,7 @@ const DAI = await Fetcher.fetchTokenData(
 
 Now that we've explored how to define a token, let's talk about pairs.
 
-<!-- To read more about what Hermes pairs are, see [Pair](../../../protocol/V2/reference/smart-contracts/pair) -->
+To read more about what Hermes pairs are, see [Pair](../../contracts/Hermes%20Swap/#hermespairsol)
 
 As an example, let's try to represent the DAI-WETH pair.
 
@@ -116,7 +116,7 @@ Each pair consists of two tokens (see previous section). Note that WETH used by 
 
 ## Required Data
 
-The data we need is the _reserves_ of the pair. To read more about reserves, see [getReserves](../../../protocol/V2/reference/smart-contracts/pair#getreserves).
+The data we need is the _reserves_ of the pair. To read more about reserves, see [getReserves](../../contracts/Hermes%20Swap/#misc-functions).
 
 ### Provided by the User
 
@@ -131,21 +131,21 @@ import {
   TokenAmount,
 } from '@hermesdefiofficial/sdk';
 
-const DAI = new Token(
+const USDC = new Token(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-  18
+  '0x985458E523dB3d53125813eD68c274899e9DfAb4',
+  6
 );
 
 async function getPair(): Promise<Pair> {
-  const pairAddress = Pair.getAddress(DAI, WETH[DAI.chainId]);
+  const pairAddress = Pair.getAddress(USDC, WETH[USDC.chainId]);
 
   const reserves = [
     /* use pairAddress to fetch reserves here */
   ];
   const [reserve0, reserve1] = reserves;
 
-  const tokens = [DAI, WETH[DAI.chainId]];
+  const tokens = [USDC, WETH[USDC.chainId]];
   const [token0, token1] = tokens[0].sortsBefore(tokens[1])
     ? tokens
     : [tokens[1], tokens[0]];
@@ -167,15 +167,15 @@ If we don't want to look up the value ourselves, we can ask the SDK to look them
 ```typescript
 import { ChainId, Token, WETH, Fetcher } from '@hermesdefiofficial/sdk';
 
-const DAI = new Token(
+const USDC = new Token(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-  18
+  '0x985458E523dB3d53125813eD68c274899e9DfAb4',
+  6
 );
 
 // note that you may want/need to handle this async code differently,
 // for example if top-level await is not an option
-const pair = await Fetcher.fetchPairData(DAI, WETH[DAI.chainId]);
+const pair = await Fetcher.fetchPairData(USDC, WETH[USDC.chainId]);
 ```
 
 By default, this method will use the [default provider defined by ethers.js](https://docs.ethers.io/v5/api/providers/#providers-getDefaultProvider). If you're already using ethers.js in your application, you may pass in your provider as a 3rd argument. If you're using another library, you'll have to fetch the data separately.

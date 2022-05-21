@@ -12,5 +12,4 @@ Here you can find easily searchable references for the SDK. For deeper dives, we
 # Hermes Dex SDK
 
 - [**SDK Github**](https://github.com/Hermes-defi/hermes-sdk)
-  <!-- - [**SDK Core Github**](https://github.com/Uniswap/uniswap-sdk-core) -->
 - [**SDK NPM Package**](https://www.npmjs.com/package/@hermesdefiofficial/sdk)

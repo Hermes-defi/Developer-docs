@@ -22,7 +22,7 @@ import { ChainId, Token, WETH, Fetcher, Route } from '@hermesdefiofficial/sdk';
 
 const DAI = new Token(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339',
   18
 );
 
@@ -51,12 +51,12 @@ import { ChainId, Token, WETH, Fetcher, Route } from '@hermesdefiofficial/sdk';
 
 const USDC = new Token(
   ChainId.MAINNET,
-  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+  '0x985458E523dB3d53125813eD68c274899e9DfAb4',
   6
 );
 const DAI = new Token(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339',
   18
 );
 
@@ -91,7 +91,7 @@ import {
 
 const DAI = new Token(
   ChainId.MAINNET,
-  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339',
   18
 );
 
