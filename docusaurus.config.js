@@ -94,8 +94,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Contracts',
                 to: '/docs/contracts/intro',
+              },
+              {
+                label: 'SDK',
+                to: '/docs/sdk',
               },
             ],
           },

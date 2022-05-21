@@ -18,7 +18,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/contracts/intro"
           >
-            Hermes Tutorial
+            Hermes Documentation
           </Link>
         </div>
       </div>
