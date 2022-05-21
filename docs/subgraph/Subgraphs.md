@@ -9,14 +9,6 @@ sidebar_position: 1
 
 # Hermes Subgraphs
 
-## Exchange
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/exchange/graphql
-
-## Masterchef
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/masterchefV2/graphql
-
 ## Bar
 
 https://testnet-graph.hermesdefi.io/subgraphs/name/bar/graphql
@@ -28,6 +20,14 @@ https://testnet-graph.hermesdefi.io/subgraphs/name/blocks/graphql
 ## Dexcandles
 
 https://testnet-graph.hermesdefi.io/subgraphs/name/dexcandles/graphql
+
+## Exchange
+
+https://testnet-graph.hermesdefi.io/subgraphs/name/exchange/graphql
+
+## Masterchef
+
+https://testnet-graph.hermesdefi.io/subgraphs/name/masterchefV2/graphql
 
 ## SHermes
 
