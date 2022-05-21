@@ -80,6 +80,12 @@ const config = {
             position: 'left',
             label: 'SDK',
           },
+          {
+            type: 'doc',
+            docId: 'subgraph/Subgraphs',
+            position: 'left',
+            label: 'Subgraph (API)',
+          },
           /*{
             href: 'https://github.com/Hermes-defi',
             label: 'GitHub',
