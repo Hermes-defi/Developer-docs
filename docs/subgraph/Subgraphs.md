@@ -29,6 +29,10 @@ https://testnet-graph.hermesdefi.io/subgraphs/name/exchange/graphql
 
 https://testnet-graph.hermesdefi.io/subgraphs/name/masterchefV2/graphql
 
-## SHermes
+## Moneymaker
+
+https://testnet-graph.hermesdefi.io/subgraphs/name/moneymaker/graphql
+
+## sHermes
 
 https://testnet-graph.hermesdefi.io/subgraphs/name/shermes/graphql
