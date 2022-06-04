@@ -24,7 +24,7 @@ The first command is to remove the folder that you have cloned before, ensure th
 
 ## Video
 We've made a very basic introduction video on how to work with this documentation and contriubte to it.
-<iframe src="https://www.youtube.com/watch?v=-QD18sLNwGg" frameborder="0" allowfullscreen width="100%"></iframe>
+https://www.youtube.com/watch?v=-QD18sLNwGg
 
 ## Getting Started
 
