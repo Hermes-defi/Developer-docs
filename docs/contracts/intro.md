@@ -9,7 +9,7 @@ The purpose of this manual is to explain the operation of each part that makes u
 
 # Documentation
 
-Are you part of **Hermes** heroes and want to contribute with some documentation? Please fell free to contribute. Our documentation is docusaurus based. With this simple commands, you can create and edit our docs!
+Are you part of **Hermes** heroes and want to contribute with some documentation? Please feel free to contribute. Our documentation is docusaurus based. With this simple commands, you can create and edit our docs!
 
 The first command is to remove the folder that you have cloned before, ensure that you are on the right directory. **Replace SETYOURPERSONALGITTOKENHERE for your git personal token**
 
@@ -23,8 +23,8 @@ The first command is to remove the folder that you have cloned before, ensure th
 (paste your gpg personal token and press enter)
 
 ## Video
-
-Please check our video for https://drive.google.com/file/d/1fTbo20-scaz3Z3SyImP-wq_DkGT0H9hw/view?usp=sharing
+We've made a very basic introduction video on how to work with this documentation and contriubte to it.
+<iframe src="https://www.youtube.com/watch?v=-QD18sLNwGg" frameborder="0" allowfullscreen width="100%"></iframe>
 
 ## Getting Started
 

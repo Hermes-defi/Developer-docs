@@ -8,31 +8,25 @@ sidebar_position: 1
 ---
 
 # Hermes Subgraphs
+Each of these subgraphs allow different queries across data collected from our database. In order to get started, visit the following links to play around in our API playground.
 
 ## Bar
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/bar/graphql
+https://graph.hermesdefi.io/subgraphs/name/bar/graphql
 
 ## Blocks
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/blocks/graphql
+https://graph.hermesdefi.io/subgraphs/name/blocks/graphql
 
 ## Dexcandles
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/dexcandles/graphql
+https://graph.hermesdefi.io/subgraphs/name/dexcandles/graphql
 
 ## Exchange
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/exchange/graphql
+https://graph.hermesdefi.io/subgraphs/name/exchange/graphql
 
 ## Masterchef
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/masterchefV2/graphql
+https://graph.hermesdefi.io/subgraphs/name/masterchefV2/graphql
 
 ## Moneymaker
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/moneymaker/graphql
+https://graph.hermesdefi.io/subgraphs/name/moneymaker/graphql
 
 ## sHermes
-
-https://testnet-graph.hermesdefi.io/subgraphs/name/shermes/graphql
+https://graph.hermesdefi.io/subgraphs/name/shermes/graphql
